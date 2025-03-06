@@ -54,8 +54,8 @@ public class MyTelegramBot extends TelegramLongPollingBot {
 
                 if (text.equals("/start")) {
                     sendTextMessage(chatId, "Welcome! Click button to  send your phone number.");
-                    sendContactRequest(chatId);
                 }
+                sendContactRequest(chatId);
             }
 
             else if (message.hasContact()) {
