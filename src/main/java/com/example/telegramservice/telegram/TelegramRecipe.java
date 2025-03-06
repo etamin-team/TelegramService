@@ -21,7 +21,8 @@ import java.util.UUID;
 @Setter
 public class TelegramRecipe {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "recipe_id")
     private Long  recipeId;
 
     @Column(name = "number",unique = true)
