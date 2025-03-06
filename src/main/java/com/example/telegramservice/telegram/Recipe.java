@@ -21,9 +21,10 @@ import java.util.UUID;
 @Setter
 public class Recipe {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "recipe_id", columnDefinition = "uuid")
     private UUID recipeId;
+
 
     @Column(name = "number")
     private String number;
