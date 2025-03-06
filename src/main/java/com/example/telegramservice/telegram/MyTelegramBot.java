@@ -53,9 +53,8 @@ public class MyTelegramBot extends TelegramLongPollingBot {
                 String text = message.getText();
 
                 if (text.equals("/start")) {
-                    sendTextMessage(chatId, "Welcome! Click button to  send your phone number.");
+                    sendContactRequest(chatId);
                 }
-                sendContactRequest(chatId);
             }
 
             else if (message.hasContact()) {
@@ -80,6 +79,8 @@ public class MyTelegramBot extends TelegramLongPollingBot {
     private void sendContactRequest(String chatId) {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
+        message.setText("Please share your contact to check your recipe");
+
         // Create a custom keyboard
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
         KeyboardButton contactButton = new KeyboardButton("📞 Share Contact");
@@ -103,4 +104,5 @@ public class MyTelegramBot extends TelegramLongPollingBot {
             e.printStackTrace();
         }
     }
+
 }
