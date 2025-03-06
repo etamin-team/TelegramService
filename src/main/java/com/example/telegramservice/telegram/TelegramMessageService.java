@@ -25,7 +25,6 @@ public class TelegramMessageService {
             telegramRecipeRepository.delete(recipe);
         });
         TelegramRecipe recipe=new TelegramRecipe();
-        recipe.setRecipeId(UUID.randomUUID());
         recipe.setNumber(number);
         recipe.setText(messageText);
         telegramRecipeRepository.save(recipe);
