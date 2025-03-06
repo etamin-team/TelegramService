@@ -80,8 +80,6 @@ public class MyTelegramBot extends TelegramLongPollingBot {
     private void sendContactRequest(String chatId) {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
-        message.setText("Click the button below to share your phone number:");
-
         // Create a custom keyboard
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
         KeyboardButton contactButton = new KeyboardButton("📞 Share Contact");
