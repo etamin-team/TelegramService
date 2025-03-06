@@ -26,7 +26,7 @@ public class Recipe {
     private UUID recipeId;
 
     @Column(name = "number")
-    private Long number;
+    private String number;
 
     private String text;
 }

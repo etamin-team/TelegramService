@@ -1,5 +1,8 @@
 package com.example.telegramservice.telegram;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -22,6 +25,14 @@ public class MyTelegramBot extends TelegramLongPollingBot {
 
     private final String botToken = "7753134071:AAHGgpu9GKyJs6sJ0lMTwg70l5fv2p9efZs";
 
+    private final TelegramRecipeRepository telegramRecipeRepository;
+
+    @Autowired
+    public MyTelegramBot(TelegramRecipeRepository telegramRecipeRepository) {
+        this.telegramRecipeRepository = telegramRecipeRepository;
+    }
+
+
     @Override
     public String getBotUsername() {
         return "@world_medicine_bot";
@@ -42,16 +53,15 @@ public class MyTelegramBot extends TelegramLongPollingBot {
                 String text = message.getText();
 
                 if (text.equals("/start")) {
-                    sendTextMessage(chatId, "Welcome! Use /share_number to send your phone number.");
-                } else if (text.equals("/share_number")) {
+                    sendTextMessage(chatId, "Welcome! Click button to  send your phone number.");
                     sendContactRequest(chatId);
                 }
             }
 
-            // Handle received contact
             else if (message.hasContact()) {
                 String phoneNumber = message.getContact().getPhoneNumber();
-                sendTextMessage(chatId, "Thank you! Your phone number: " + phoneNumber);
+                Recipe recipe = telegramRecipeRepository.findByNumber(phoneNumber).get();
+                sendTextMessage(chatId, recipe.getText());
             }
         }
     }
