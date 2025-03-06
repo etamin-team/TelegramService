@@ -15,6 +15,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @RestController
 @RequestMapping("/telegram")
+@CrossOrigin(origins = "*")
 public class TelegramController {
     private final TelegramMessageService messageService;
 
