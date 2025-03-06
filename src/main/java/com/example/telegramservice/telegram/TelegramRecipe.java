@@ -21,13 +21,14 @@ import java.util.UUID;
 @Setter
 public class TelegramRecipe {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "recipe_id", columnDefinition = "uuid")
-    private UUID recipeId;
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long  recipeId;
 
     @Column(name = "number",unique = true)
     private String number;
 
     private String text;
+
+    @Version
+    private Long version;
 }
