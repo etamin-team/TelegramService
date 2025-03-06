@@ -1,5 +1,6 @@
 package com.example.telegramservice.telegram;//package com.example.user_management_service.telegram;
 
+import jdk.jfr.Threshold;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
@@ -11,12 +12,11 @@ import java.util.UUID;
  * Time-8:21 PM (GMT+5)
  */
 @Service
+@Threshold
 public class TelegramMessageService {
-    private final MyTelegramBot bot;
     private final TelegramRecipeRepository telegramRecipeRepository;
 
-    public TelegramMessageService(MyTelegramBot bot, TelegramRecipeRepository telegramRecipeRepository) {
-        this.bot = bot;
+    public TelegramMessageService( TelegramRecipeRepository telegramRecipeRepository) {
         this.telegramRecipeRepository = telegramRecipeRepository;
     }
 
@@ -25,10 +25,6 @@ public class TelegramMessageService {
         recipe.setNumber(number);
         recipe.setText(messageText);
         recipe.setRecipeId(UUID.randomUUID());
-        try {
-            telegramRecipeRepository.save(recipe);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        telegramRecipeRepository.save(recipe);
     }
 }

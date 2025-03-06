@@ -27,7 +27,7 @@ public class TelegramController {
  
     @PostMapping("/send-message")
     public ResponseEntity<String> sendMessage(@RequestParam String number, @RequestParam String message) {
-            messageService.sendMessageToUser(String.valueOf(number), message);
+            messageService.sendMessageToUser(number, message);
             return ResponseEntity.ok("Message sent!");
     }
 
