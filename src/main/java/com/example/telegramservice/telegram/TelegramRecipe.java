@@ -26,7 +26,7 @@ public class TelegramRecipe {
     private UUID recipeId;
 
 
-    @Column(name = "number")
+    @Column(name = "number",unique = true)
     private String number;
 
     private String text;
