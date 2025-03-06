@@ -15,8 +15,8 @@ import java.util.UUID;
  * Time-6:33 AM (GMT+5)
  */
 @Repository
-public interface TelegramRecipeRepository extends JpaRepository<Recipe, UUID> {
+public interface TelegramRecipeRepository extends JpaRepository<TelegramRecipe, UUID> {
 
-    @Query("SELECT ac FROM Recipe ac WHERE ac.number = :number ORDER BY ac.recipeId asc limit 1")
-    Optional<Recipe> findByNumber(@Param("number")  String number);
+    @Query("SELECT ac FROM TelegramRecipe ac WHERE ac.number = :number")
+    Optional<TelegramRecipe> findByNumber(@Param("number")  String number);
 }

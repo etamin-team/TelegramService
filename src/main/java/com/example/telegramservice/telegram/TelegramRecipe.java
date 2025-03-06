@@ -19,9 +19,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Recipe {
+public class TelegramRecipe {
     @Id
-        @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "recipe_id", columnDefinition = "uuid")
     private UUID recipeId;
 

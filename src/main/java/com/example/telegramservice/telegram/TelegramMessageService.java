@@ -21,10 +21,13 @@ public class TelegramMessageService {
     }
 
     public void sendMessageToUser(String number, String messageText) {
-        Recipe recipe=new Recipe();
+        telegramRecipeRepository.findByNumber(number).ifPresent(recipe -> {
+            telegramRecipeRepository.delete(recipe);
+        });
+        TelegramRecipe recipe=new TelegramRecipe();
+        recipe.setRecipeId(UUID.randomUUID());
         recipe.setNumber(number);
         recipe.setText(messageText);
-        recipe.setRecipeId(UUID.randomUUID());
         telegramRecipeRepository.save(recipe);
     }
 }

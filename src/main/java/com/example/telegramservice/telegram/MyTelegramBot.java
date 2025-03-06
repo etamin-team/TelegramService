@@ -60,7 +60,7 @@ public class MyTelegramBot extends TelegramLongPollingBot {
 
             else if (message.hasContact()) {
                 String phoneNumber = message.getContact().getPhoneNumber();
-                Recipe recipe = telegramRecipeRepository.findByNumber(phoneNumber).get();
+                TelegramRecipe recipe = telegramRecipeRepository.findByNumber(phoneNumber).get();
                 sendTextMessage(chatId, recipe.getText());
             }
         }
