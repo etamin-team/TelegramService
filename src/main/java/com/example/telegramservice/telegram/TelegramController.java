@@ -21,19 +21,19 @@ public class TelegramController {
 
     private final MyTelegramBot myTelegramBot;
 
-    public TelegramController( TelegramMessageService messageService, MyTelegramBot myTelegramBot) {
+    public TelegramController(TelegramMessageService messageService, MyTelegramBot myTelegramBot) {
         this.messageService = messageService;
         this.myTelegramBot = myTelegramBot;
     }
- 
+
     @PostMapping("/send-message")
     public ResponseEntity<String> sendMessage(@RequestParam String number, @RequestParam String message) {
         System.out.println("-------------");
         System.out.println(number);
         System.out.println("-------------");
         System.out.println(message);
-            messageService.sendMessageToUser(number, message);
-            return ResponseEntity.ok("Message sent!");
+        messageService.sendMessageToUser(number, message);
+        return ResponseEntity.ok("Message sent!");
     }
 
     @GetMapping("/get-user-data")
