@@ -28,6 +28,7 @@ public class TelegramRecipe {
     @Column(name = "number",unique = true)
     private String number;
 
+    @Column(length = 2000)
     private String text;
 
     @Version

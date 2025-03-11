@@ -59,6 +59,11 @@ public class MyTelegramBot extends TelegramLongPollingBot {
 
             else if (message.hasContact()) {
                 String phoneNumber = message.getContact().getPhoneNumber();
+                System.out.println("--------------------------------");
+                System.out.println("--------------------------------");
+                System.out.println("--------------------------------");
+                System.out.println("--------------------------------");
+                System.out.println(phoneNumber);
                 TelegramRecipe recipe = telegramRecipeRepository.findByNumber(phoneNumber).orElse(new TelegramRecipe(1l,"","There is no Recipe yet",1l) );
                 sendTextMessage(chatId, recipe.getText());
             }
