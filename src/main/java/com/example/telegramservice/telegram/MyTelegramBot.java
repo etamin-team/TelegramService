@@ -77,6 +77,7 @@ public class MyTelegramBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
         message.setText(text);
+        message.setParseMode("HTML");
         try {
             execute(message);
         } catch (Exception e) {
@@ -87,11 +88,11 @@ public class MyTelegramBot extends TelegramLongPollingBot {
     private void sendContactRequest(String chatId) {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
-        message.setText("Please share your contact to check your recipe");
+        message.setText("Пожалуйста, поделитесь своими номером, чтобы проверить ваш рецепт");
 
         // Create a custom keyboard
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-        KeyboardButton contactButton = new KeyboardButton("📞 Share Contact");
+        KeyboardButton contactButton = new KeyboardButton("📞 Поделиться Номером");
         contactButton.setRequestContact(true);
 
         KeyboardRow keyboardRow = new KeyboardRow();
