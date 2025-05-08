@@ -67,7 +67,7 @@ public class MyTelegramBot extends TelegramLongPollingBot {
                 if (phoneNumber.startsWith("+")){
                     phoneNumber=phoneNumber.substring(1);
                 }
-                TelegramRecipe recipe = telegramRecipeRepository.findByNumber(phoneNumber).orElse(new TelegramRecipe(1l,"","There is no Recipe yet",1l) );
+                TelegramRecipe recipe = telegramRecipeRepository.findByNumber(phoneNumber).orElse(new TelegramRecipe(1l,"","Рецепта пока нет",1l) );
                 sendTextMessage(chatId, recipe.getText());
             }
         }
@@ -77,7 +77,7 @@ public class MyTelegramBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
         message.setText(text);
-        message.setParseMode("MarkdownV2");
+        message.setParseMode("Markdown");
         try {
             execute(message);
         } catch (Exception e) {
