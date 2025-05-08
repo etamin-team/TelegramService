@@ -77,7 +77,7 @@ public class MyTelegramBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
         message.setText(text);
-        message.setParseMode("Markdown");
+        message.setParseMode("MarkdownV2");
         try {
             execute(message);
         } catch (Exception e) {
