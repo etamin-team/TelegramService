@@ -76,14 +76,38 @@ public class MyTelegramBot extends TelegramLongPollingBot {
     private void sendTextMessage(String chatId, String text) {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
-        message.setText(text);
         message.setParseMode("MarkdownV2");
+        message.setText(escapeMarkdownV2(text)); // Escape special characters
         try {
             execute(message);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    // Escapes special characters for MarkdownV2
+    private String escapeMarkdownV2(String text) {
+        return text
+                .replace("_", "\\_")
+                .replace("*", "\\*")
+                .replace("[", "\\[")
+                .replace("]", "\\]")
+                .replace("(", "\\(")
+                .replace(")", "\\)")
+                .replace("~", "\\~")
+                .replace("`", "\\`")
+                .replace(">", "\\>")
+                .replace("#", "\\#")
+                .replace("+", "\\+")
+                .replace("-", "\\-")  // Important one from your error
+                .replace("=", "\\=")
+                .replace("|", "\\|")
+                .replace("{", "\\{")
+                .replace("}", "\\}")
+                .replace(".", "\\.")
+                .replace("!", "\\!");
+    }
+
 
     private void sendContactRequest(String chatId) {
         SendMessage message = new SendMessage();
