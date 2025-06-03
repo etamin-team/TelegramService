@@ -23,7 +23,7 @@ import java.util.List;
 @Service
 public class MyTelegramBot extends TelegramLongPollingBot {
 
-    private final String botToken = "7575148231:AAF3XZREaJh-skXs6fGu9kxq_YsC5nOlygg";
+    private final String botToken = "8026908589:AAHNMg7MwOfyZvKtxOmtz38QfTOF6swJsc8";
 
     private final TelegramRecipeRepository telegramRecipeRepository;
 
@@ -35,7 +35,7 @@ public class MyTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "@mNoZnpFH_bot";
+        return "@mNoZnpFv_bot";
     }
 
     @Override
